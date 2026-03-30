@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل الشهادات الاحترافية في تقنية المعلومات</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --border: #1e2d45;
+    --accent: #3b82f6;
+    --accent2: #06b6d4;
+    --accent3: #8b5cf6;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --beginner: #10b981;
+    --intermediate: #f59e0b;
+    --advanced: #ef4444;
+    --saudi: #059669;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    direction: rtl;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 24px 40px;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -120px; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.3;
+    background: linear-gradient(135deg, #e2e8f0 30%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .controls {
+    max-width: 1200px;
+    margin: 0 auto 28px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .search-wrap {
+    position: relative;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 48px 14px 18px;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: border-color .2s;
+  }
+
+  .search-wrap input:focus { border-color: var(--accent); }
+
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 16px;
+    pointer-events: none;
+  }
+
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+  .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  .level-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .level-btn {
+    padding: 7px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .level-btn[data-level="مبتدئ"] { color: var(--beginner); border-color: rgba(16,185,129,0.3); }
+  .level-btn[data-level="متوسط"] { color: var(--intermediate); border-color: rgba(245,158,11,0.3); }
+  .level-btn[data-level="متقدم"] { color: var(--advanced); border-color: rgba(239,68,68,0.3); }
+  .level-btn.active[data-level="مبتدئ"] { background: rgba(16,185,129,0.15); }
+  .level-btn.active[data-level="متوسط"] { background: rgba(245,158,11,0.15); }
+  .level-btn.active[data-level="متقدم"] { background: rgba(239,68,68,0.15); }
+
+  .controls-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .results-count { color: var(--muted); font-size: 13px; }
+  .results-count span { color: var(--text); font-weight: 600; }
+
+  .reset-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: inherit;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .reset-btn:hover { color: var(--text); border-color: var(--accent); }
+
+  .grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    border-radius: 0 16px 0 80px;
+    opacity: 0.06;
+    transition: opacity .2s;
+  }
+
+  .card.beginner::before { background: var(--beginner); }
+  .card.intermediate::before { background: var(--intermediate); }
+  .card.advanced::before { background: var(--advanced); }
+  .card.saudi::before { background: var(--saudi); }
+
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59,130,246,0.4);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .card:hover::before { opacity: 0.12; }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .category-tag {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: rgba(59,130,246,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(59,130,246,0.2);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .category-tag.saudi-tag {
+    background: rgba(5,150,105,0.12);
+    color: var(--saudi);
+    border: 1px solid rgba(5,150,105,0.2);
+  }
+
+  .level-badge {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .level-badge.مبتدئ { background: rgba(16,185,129,0.12); color: var(--beginner); border: 1px solid rgba(16,185,129,0.25); }
+  .level-badge.متوسط { background: rgba(245,158,11,0.12); color: var(--intermediate); border: 1px solid rgba(245,158,11,0.25); }
+  .level-badge.متقدم { background: rgba(239,68,68,0.12); color: var(--advanced); border: 1px solid rgba(239,68,68,0.25); }
+
+  .card-name {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text);
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .card-meta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .meta-item .icon { font-size: 13px; }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  .provider {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .apply-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all .2s;
+  }
+
+  .apply-btn:hover {
+    background: #2563eb;
+    transform: translateX(-2px);
+  }
+
+  .cost {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .cost.free { color: var(--beginner); }
+  .cost.paid { color: var(--text); }
+
+  .empty {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .empty-icon { font-size: 48px; margin-bottom: 16px; }
+  .empty h3 { font-size: 18px; margin-bottom: 8px; }
+  .empty p { color: var(--muted); font-size: 14px; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  input::placeholder { color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: 1fr; }
+    .stats-row { gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">🎓 دليل شامل ومحدّث</div>
+  <h1>الشهادات الاحترافية<br>في تقنية المعلومات</h1>
+  <p>أكثر من 105 شهادات احترافية في جميع تخصصات الحاسب، مع مستوى كل شهادة ورابط التقديم المباشر</p>
+  <div class="stats-row">
+    <div class="stat"><div class="stat-num" id="total-count">105+</div><div class="stat-label">شهادة احترافية</div></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">تخصص رئيسي</div></div>
+    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">جهة معتمدة</div></div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="ابحث عن شهادة أو جهة...">
+    <span class="search-icon">🔍</span>
+  </div>
+
+  <div class="filters" id="category-filters"></div>
+
+  <div class="level-filters">
+    <button class="level-btn active" data-level="الكل">جميع المستويات</button>
+    <button class="level-btn" data-level="مبتدئ">🟢 مبتدئ</button>
+    <button class="level-btn" data-level="متوسط">🟡 متوسط</button>
+    <button class="level-btn" data-level="متقدم">🔴 متقدم</button>
+  </div>
+
+  <div class="controls-bottom">
+    <div class="results-count">عرض <span id="shown-count">0</span> شهادة</div>
+    <button class="reset-btn" onclick="resetFilters()">↺ إعادة ضبط</button>
+  </div>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<script>
+const certs = [
+  { id:1, name:"CompTIA Tech+", category:"تقنية المعلومات العامة", provider:"CompTIA", level:"مبتدئ", desc:"مدخل لعالم تقنية المعلومات للمبتدئين تمامًا", url:"https://www.comptia.org/certifications/tech", cost:896 },
+  { id:2, name:"CompTIA A+ (Core 1 + Core 2)", category:"تقنية المعلومات العامة", provider:"CompTIA", level:"مبتدئ", desc:"دعم تقني، أجهزة، وأنظمة تشغيل", url:"https://www.comptia.org/certifications/a", cost:1845 },
+  { id:3, name:"Google IT Support Certificate", category:"تقنية المعلومات العامة", provider:"Google", level:"مبتدئ", desc:"دعم تقني شامل من Google", url:"https://grow.google/itsupport", cost:184 },
+  { id:4, name:"Microsoft 365 Fundamentals (MS-900)", category:"تقنية المعلومات العامة", provider:"Microsoft", level:"مبتدئ", desc:"أساسيات Microsoft 365 والسحابة (ينتهي March 2026)", url:"https://learn.microsoft.com/en-us/certifications/microsoft-365-fundamentals/", cost:619 },
+  { id:5, name:"CompTIA Network+", category:"الشبكات", provider:"CompTIA", level:"مبتدئ", desc:"أساسيات الشبكات والبنية التحتية", url:"https://www.comptia.org/certifications/network", cost:1268 },
+  { id:6, name:"Cisco CCNA", category:"الشبكات", provider:"Cisco", level:"متوسط", desc:"تصميم وإدارة الشبكات من Cisco", url:"https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html", cost:1238 },
+  { id:7, name:"Cisco CCNP Enterprise", category:"الشبكات", provider:"Cisco", level:"متقدم", desc:"شبكات المؤسسات على مستوى متقدم", url:"https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/professional/ccnp-enterprise.html", cost:1500 },
+  { id:8, name:"Cisco CCIE Enterprise Infrastructure", category:"الشبكات", provider:"Cisco", level:"متقدم", desc:"أعلى شهادة في الشبكات من Cisco", url:"https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/expert/ccie-enterprise-infrastructure.html", cost:6000 },
+  { id:9, name:"Juniper JNCIA-Junos", category:"الشبكات", provider:"Juniper Networks (HPE)", level:"مبتدئ", desc:"أساسيات شبكات Juniper", url:"https://www.juniper.net/us/en/training/certification/tracks/junos/jncia-junos.html", cost:750 },
+  { id:10, name:"Juniper JNCIS-ENT", category:"الشبكات", provider:"Juniper Networks (HPE)", level:"متوسط", desc:"شبكات المؤسسات المتوسطة", url:"https://www.juniper.net/us/en/training/certification/tracks/junos", cost:900 },
+  { id:11, name:"CompTIA Security+", category:"الأمن السيبراني", provider:"CompTIA", level:"مبتدئ", desc:"أساسيات الأمن السيبراني - معتمدة دوليًا", url:"https://www.comptia.org/certifications/security", cost:1470 },
+  { id:12, name:"Certified Ethical Hacker (CEH)", category:"الأمن السيبراني", provider:"EC-Council", level:"متوسط", desc:"اختبار الاختراق الأخلاقي", url:"https://www.eccouncil.org/train-certify/certified-ethical-hacker-ceh/", cost:4496 },
+  { id:13, name:"CompTIA CySA+", category:"الأمن السيبراني", provider:"CompTIA", level:"متوسط", desc:"تحليل التهديدات الأمنية", url:"https://www.comptia.org/certifications/cybersecurity-analyst", cost:1470 },
+  { id:14, name:"Offensive Security OSCP+", category:"الأمن السيبراني", provider:"Offensive Security", level:"متقدم", desc:"اختبار اختراق احترافي عملي", url:"https://www.offensive-security.com/pwk-oscp/", cost:6371 },
+  { id:15, name:"CISSP", category:"الأمن السيبراني", provider:"ISC2", level:"متقدم", desc:"أعلى شهادة في أمن المعلومات", url:"https://www.isc2.org/Certifications/CISSP", cost:2809 },
+  { id:16, name:"CISM", category:"الأمن السيبراني", provider:"ISACA", level:"متقدم", desc:"إدارة أمن المعلومات", url:"https://www.isaca.org/credentialing/cism", cost:2850 },
+  { id:17, name:"CompTIA PenTest+", category:"الأمن السيبراني", provider:"CompTIA", level:"متوسط", desc:"اختبار الاختراق والثغرات", url:"https://www.comptia.org/certifications/pentest", cost:1470 },
+  { id:18, name:"eJPT", category:"الأمن السيبراني", provider:"INE Security", level:"مبتدئ", desc:"مدخل لاختبار الاختراق", url:"https://security.ine.com/certifications/ejpt-certification/", cost:750 },
+  { id:19, name:"Palo Alto PCNSA", category:"الأمن السيبراني", provider:"Palo Alto Networks", level:"مبتدئ", desc:"إدارة جدار حماية Palo Alto", url:"https://www.paloaltonetworks.com/services/education/certification", cost:656 },
+  { id:20, name:"Fortinet NSE 4", category:"الأمن السيبراني", provider:"Fortinet", level:"متوسط", desc:"إدارة FortiGate وأمن الشبكات", url:"https://www.fortinet.com/support/training/network-security-expert-program/nse-4.html", cost:400 },
+  { id:21, name:"Splunk Core Certified User", category:"الأمن السيبراني", provider:"Splunk", level:"مبتدئ", desc:"تحليل البيانات والأمن بـ Splunk", url:"https://www.splunk.com/en_us/training/certification-track/splunk-core-certified-user.html", cost:488 },
+  { id:22, name:"EC-Council CHFI", category:"الأمن السيبراني", provider:"EC-Council", level:"متقدم", desc:"التحقيق الجنائي الرقمي", url:"https://www.eccouncil.org/train-certify/computer-hacking-forensic-investigator-chfi/", cost:3746 },
+  { id:23, name:"ISC2 CCSP", category:"الأمن السيبراني", provider:"ISC2", level:"متقدم", desc:"أمن الحوسبة السحابية الاحترافي", url:"https://www.isc2.org/en/Certifications/CCSP", cost:2621 },
+  { id:24, name:"AWS Security Specialty", category:"الأمن السيبراني", provider:"Amazon AWS", level:"متقدم", desc:"أمن السحابة على AWS", url:"https://aws.amazon.com/certification/certified-security-specialty/", cost:1125 },
+  { id:25, name:"Microsoft AZ-500", category:"الأمن السيبراني", provider:"Microsoft", level:"متقدم", desc:"أمن Azure الاحترافي", url:"https://learn.microsoft.com/en-us/certifications/azure-security-engineer/", cost:619 },
+  { id:26, name:"GIAC Security Essentials (GSEC)", category:"الأمن السيبراني", provider:"SANS/GIAC", level:"متوسط", desc:"أساسيات الأمن السيبراني من SANS", url:"https://www.giac.org/certification/security-essentials-gsec", cost:1874 },
+  { id:27, name:"GIAC Penetration Tester (GPEN)", category:"الأمن السيبراني", provider:"SANS/GIAC", level:"متقدم", desc:"اختبار الاختراق الاحترافي", url:"https://www.giac.org/certification/penetration-tester", cost:1874 },
+  { id:28, name:"AWS Cloud Practitioner", category:"الحوسبة السحابية", provider:"Amazon AWS", level:"مبتدئ", desc:"أساسيات السحابة مع AWS", url:"https://aws.amazon.com/certification/certified-cloud-practitioner/", cost:375 },
+  { id:29, name:"AWS Solutions Architect Associate", category:"الحوسبة السحابية", provider:"Amazon AWS", level:"متوسط", desc:"تصميم حلول سحابية على AWS", url:"https://aws.amazon.com/certification/certified-solutions-architect-associate/", cost:563 },
+  { id:30, name:"AWS Solutions Architect Professional", category:"الحوسبة السحابية", provider:"Amazon AWS", level:"متقدم", desc:"تصميم معماريات سحابية معقدة", url:"https://aws.amazon.com/certification/certified-solutions-architect-professional/", cost:1125 },
+  { id:31, name:"AWS Developer Associate", category:"الحوسبة السحابية", provider:"Amazon AWS", level:"متوسط", desc:"تطوير تطبيقات على AWS", url:"https://aws.amazon.com/certification/certified-developer-associate/", cost:563 },
+  { id:32, name:"AWS SysOps Administrator", category:"الحوسبة السحابية", provider:"Amazon AWS", level:"متوسط", desc:"إعمليات السحابة على AWS", url:"https://aws.amazon.com/certification/certified-sysops-admin-associate/", cost:563 },
+  { id:33, name:"Azure Fundamentals (AZ-900)", category:"الحوسبة السحابية", provider:"Microsoft", level:"مبتدئ", desc:"أساسيات Azure والسحابة", url:"https://learn.microsoft.com/en-us/certifications/azure-fundamentals/", cost:619 },
+  { id:34, name:"Azure Administrator (AZ-104)", category:"الحوسبة السحابية", provider:"Microsoft", level:"متوسط", desc:"إدارة بيئات Azure", url:"https://learn.microsoft.com/en-us/certifications/azure-administrator/", cost:619 },
+  { id:35, name:"Azure Developer (AZ-204)", category:"الحوسبة السحابية", provider:"Microsoft", level:"متوسط", desc:"تطوير تطبيقات Azure", url:"https://learn.microsoft.com/en-us/certifications/azure-developer/", cost:619 },
+  { id:36, name:"Google Cloud Digital Leader", category:"الحوسبة السحابية", provider:"Google Cloud", level:"مبتدئ", desc:"أساسيات Google Cloud", url:"https://cloud.google.com/learn/certification/cloud-digital-leader", cost:750 },
+  { id:37, name:"Google Associate Cloud Engineer", category:"الحوسبة السحابية", provider:"Google Cloud", level:"متوسط", desc:"هندسة السحابة مع Google", url:"https://cloud.google.com/learn/certification/cloud-engineer", cost:469 },
+  { id:38, name:"Google Cloud Professional Architect", category:"الحوسبة السحابية", provider:"Google Cloud", level:"متقدم", desc:"تصميم حلول سحابية احترافية", url:"https://cloud.google.com/learn/certification/cloud-architect", cost:750 },
+  { id:39, name:"Oracle Cloud Infrastructure Foundations", category:"الحوسبة السحابية", provider:"Oracle", level:"مبتدئ", desc:"أساسيات Oracle Cloud مجانية", url:"https://education.oracle.com/oracle-cloud-infrastructure-2023-foundations-associate", cost:0 },
+  { id:40, name:"Oracle Cloud Data Management", category:"الحوسبة السحابية", provider:"Oracle", level:"متوسط", desc:"إدارة البيانات في Oracle Cloud", url:"https://education.oracle.com/oracle-cloud-data-management-2023-associate", cost:919 },
+  { id:41, name:"CompTIA Cloud+", category:"الحوسبة السحابية", provider:"CompTIA", level:"متوسط", desc:"إدارة وتأمين البنية السحابية", url:"https://www.comptia.org/certifications/cloud", cost:1268 },
+  { id:42, name:"Alibaba Cloud Associate", category:"الحوسبة السحابية", provider:"Alibaba Cloud", level:"مبتدئ", desc:"أساسيات Alibaba Cloud", url:"https://www.alibabacloud.com/certification", cost:600 },
+  { id:43, name:"IBM Cloud Fundamentals", category:"الحوسبة السحابية", provider:"IBM", level:"مبتدئ", desc:"أساسيات IBM Cloud", url:"https://www.ibm.com/certify/cloud", cost:200 },
+  { id:44, name:"Python Institute PCEP", category:"البرمجة", provider:"Python Institute", level:"مبتدئ", desc:"أساسيات برمجة Python", url:"https://pythoninstitute.org/pcep", cost:259 },
+  { id:45, name:"Python Institute PCAP", category:"البرمجة", provider:"Python Institute", level:"متوسط", desc:"برمجة Python المتقدمة", url:"https://pythoninstitute.org/pcap", cost:1106 },
+  { id:46, name:"Oracle Java SE 17 Developer", category:"البرمجة", provider:"Oracle", level:"متوسط", desc:"تطوير Java الاحترافي", url:"https://education.oracle.com/java-se-17-developer", cost:919 },
+  { id:47, name:"CKAD", category:"البرمجة", provider:"CNCF / Linux Foundation", level:"متوسط", desc:"تطوير تطبيقات Kubernetes", url:"https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/", cost:1481 },
+  { id:48, name:"MongoDB Associate Developer", category:"البرمجة", provider:"MongoDB", level:"مبتدئ", desc:"تطوير تطبيقات MongoDB مجاناً", url:"https://learn.mongodb.com/pages/mongodb-associate-developer-exam", cost:0 },
+  { id:49, name:"Meta Back-End Developer", category:"البرمجة", provider:"Meta", level:"متوسط", desc:"تطوير التطبيقات الخلفية من Meta", url:"https://www.coursera.org/professional-certificates/meta-back-end-developer", cost:490 },
+  { id:50, name:"Meta Front-End Developer", category:"البرمجة", provider:"Meta", level:"متوسط", desc:"تطوير الواجهات الأمامية من Meta", url:"https://www.coursera.org/professional-certificates/meta-front-end-developer", cost:490 },
+  { id:51, name:"AWS Certified Developer Associate (New)", category:"البرمجة", provider:"Amazon AWS", level:"متوسط", desc:"تطوير التطبيقات على AWS محدث", url:"https://aws.amazon.com/certification/certified-developer-associate/", cost:563 },
+  { id:52, name:"IBM Data Science Professional Certificate", category:"علم البيانات والذكاء الاصطناعي", provider:"IBM", level:"مبتدئ", desc:"علم البيانات الشامل من IBM", url:"https://www.coursera.org/professional-certificates/ibm-data-science", cost:490 },
+  { id:53, name:"Google Advanced Data Analytics", category:"علم البيانات والذكاء الاصطناعي", provider:"Google", level:"متوسط", desc:"تحليل البيانات المتقدم", url:"https://grow.google/data-analytics/", cost:490 },
+  { id:54, name:"AWS Machine Learning Specialty", category:"علم البيانات والذكاء الاصطناعي", provider:"Amazon AWS", level:"متقدم", desc:"تعلم الآلة على منصة AWS", url:"https://aws.amazon.com/certification/certified-machine-learning-specialty/", cost:1125 },
+  { id:55, name:"TensorFlow Developer Certificate", category:"علم البيانات والذكاء الاصطناعي", provider:"Google", level:"متوسط", desc:"تطوير نماذج الذكاء الاصطناعي بـ TensorFlow", url:"https://www.tensorflow.org/certificate", cost:375 },
+  { id:56, name:"Databricks Spark Developer Associate", category:"علم البيانات والذكاء الاصطناعي", provider:"Databricks", level:"متوسط", desc:"معالجة البيانات الضخمة بـ Apache Spark", url:"https://www.databricks.com/learn/certification/apache-spark-developer-associate", cost:750 },
+  { id:57, name:"Microsoft AI-900", category:"علم البيانات والذكاء الاصطناعي", provider:"Microsoft", level:"مبتدئ", desc:"أساسيات الذكاء الاصطناعي مع Azure", url:"https://learn.microsoft.com/en-us/certifications/azure-ai-fundamentals/", cost:619 },
+  { id:58, name:"Microsoft PL-300", category:"علم البيانات والذكاء الاصطناعي", provider:"Microsoft", level:"متوسط", desc:"تحليل البيانات بـ Power BI", url:"https://learn.microsoft.com/en-us/certifications/power-bi-data-analyst-associate/", cost:619 },
+  { id:59, name:"Tableau Desktop Specialist", category:"علم البيانات والذكاء الاصطناعي", provider:"Tableau", level:"مبتدئ", desc:"تصور وتحليل البيانات بـ Tableau", url:"https://www.tableau.com/learn/certification/desktop-specialist", cost:938 },
+  { id:60, name:"Snowflake SnowPro Core", category:"علم البيانات والذكاء الاصطناعي", provider:"Snowflake", level:"متوسط", desc:"إدارة وتحليل البيانات على Snowflake", url:"https://www.snowflake.com/certifications/", cost:656 },
+  { id:61, name:"Google Professional Data Engineer", category:"علم البيانات والذكاء الاصطناعي", provider:"Google Cloud", level:"متقدم", desc:"هندسة البيانات على Google Cloud", url:"https://cloud.google.com/learn/certification/data-engineer", cost:750 },
+  { id:62, name:"Microsoft DP-203", category:"علم البيانات والذكاء الاصطناعي", provider:"Microsoft", level:"متوسط", desc:"هندسة البيانات على Azure", url:"https://learn.microsoft.com/en-us/certifications/azure-data-engineer/", cost:619 },
+  { id:63, name:"Cloudera Data Analyst", category:"علم البيانات والذكاء الاصطناعي", provider:"Cloudera", level:"متوسط", desc:"تحليل البيانات باستخدام Cloudera", url:"https://www.cloudera.com/about/training/certification.html", cost:295 },
+  { id:64, name:"CompTIA Linux+", category:"أنظمة التشغيل والـ Linux", provider:"CompTIA", level:"متوسط", desc:"إدارة أنظمة Linux", url:"https://www.comptia.org/certifications/linux", cost:1268 },
+  { id:65, name:"LPIC-1", category:"أنظمة التشغيل والـ Linux", provider:"Linux Professional Institute", level:"مبتدئ", desc:"مدير نظام Linux مستوى أول", url:"https://www.lpi.org/our-certifications/lpic-1-overview", cost:750 },
+  { id:66, name:"LPIC-2", category:"أنظمة التشغيل والـ Linux", provider:"Linux Professional Institute", level:"متوسط", desc:"مهندس Linux متقدم", url:"https://www.lpi.org/our-certifications/lpic-2-overview", cost:750 },
+  { id:67, name:"Red Hat RHCSA", category:"أنظمة التشغيل والـ Linux", provider:"Red Hat", level:"متوسط", desc:"مدير نظام Red Hat المعتمد", url:"https://www.redhat.com/en/services/certification/rhcsa", cost:1500 },
+  { id:68, name:"Red Hat RHCE", category:"أنظمة التشغيل والـ Linux", provider:"Red Hat", level:"متقدم", desc:"مهندس Red Hat المعتمد", url:"https://www.redhat.com/en/services/certification/rhce", cost:1500 },
+  { id:69, name:"AWS SysOps Administrator (Updated)", category:"DevOps والـ Cloud Native", provider:"Amazon AWS", level:"متوسط", desc:"إدارة عمليات السحابة", url:"https://aws.amazon.com/certification/certified-sysops-admin-associate/", cost:563 },
+  { id:70, name:"Certified Kubernetes Administrator (CKA)", category:"DevOps والـ Cloud Native", provider:"CNCF", level:"متوسط", desc:"إدارة Kubernetes الاحترافية", url:"https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/", cost:1481 },
+  { id:71, name:"Certified Kubernetes Security Specialist (CKS)", category:"DevOps والـ Cloud Native", provider:"CNCF", level:"متقدم", desc:"أمن Kubernetes الاحترافي", url:"https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist-cks-2/", cost:1669 },
+  { id:72, name:"Docker Certified Associate (DCA)", category:"DevOps والـ Cloud Native", provider:"Mirantis", level:"متوسط", desc:"إدارة حاويات Docker", url:"https://training.mirantis.com/certification/dca-certification-exam/", cost:731 },
+  { id:73, name:"HashiCorp Terraform Associate", category:"DevOps والـ Cloud Native", provider:"HashiCorp", level:"متوسط", desc:"البنية التحتية كـ Code", url:"https://www.hashicorp.com/certifications/terraform-associate", cost:263 },
+  { id:74, name:"HashiCorp Vault Associate", category:"DevOps والـ Cloud Native", provider:"HashiCorp", level:"متوسط", desc:"إدارة الأسرار والأمان", url:"https://developer.hashicorp.com/vault/tutorials/associate-cert-003", cost:375 },
+  { id:75, name:"AWS DevOps Engineer Professional", category:"DevOps والـ Cloud Native", provider:"Amazon AWS", level:"متقدم", desc:"DevOps على AWS بمستوى احترافي", url:"https://aws.amazon.com/certification/certified-devops-engineer-professional/", cost:1125 },
+  { id:76, name:"GitHub Actions Certification", category:"DevOps والـ Cloud Native", provider:"GitHub", level:"متوسط", desc:"أتمتة سير العمل مع GitHub Actions", url:"https://learn.microsoft.com/en-us/credentials/certifications/github-actions/", cost:371 },
+  { id:77, name:"Jenkins Engineer", category:"DevOps والـ Cloud Native", provider:"CloudBees", level:"متوسط", desc:"أتمتة البناء والاختبار", url:"https://cloudbees.com/jenkins-certification", cost:200 },
+  { id:78, name:"Certified Argo Project Associate (CAPA)", category:"DevOps والـ Cloud Native", provider:"CNCF", level:"مبتدئ", desc:"GitOps مع ArgoCD", url:"https://www.cncf.io/training/certification/capa/", cost:250 },
+  { id:79, name:"PMI PMP", category:"إدارة المشاريع", provider:"PMI", level:"متقدم", desc:"أشهر شهادة في إدارة المشاريع عالميًا", url:"https://www.pmi.org/certifications/project-management-pmp", cost:2081 },
+  { id:80, name:"PMI CAPM", category:"إدارة المشاريع", provider:"PMI", level:"مبتدئ", desc:"مساعد إدارة المشاريع المعتمد", url:"https://www.pmi.org/certifications/certified-associate-capm", cost:844 },
+  { id:81, name:"PRINCE2 Foundation", category:"إدارة المشاريع", provider:"Axelos", level:"مبتدئ", desc:"منهجية إدارة المشاريع البريطانية", url:"https://www.axelos.com/certifications/prince2", cost:1313 },
+  { id:82, name:"PRINCE2 Practitioner", category:"إدارة المشاريع", provider:"Axelos", level:"متوسط", desc:"ممارس إدارة المشاريع", url:"https://www.axelos.com/certifications/prince2", cost:1575 },
+  { id:83, name:"Professional Scrum Master (PSM I)", category:"إدارة المشاريع", provider:"Scrum.org", level:"مبتدئ", desc:"إدارة المشاريع بمنهجية Scrum", url:"https://www.scrum.org/assessments/professional-scrum-master-i-certification", cost:563 },
+  { id:84, name:"Professional Scrum Product Owner (PSPO I)", category:"إدارة المشاريع", provider:"Scrum.org", level:"مبتدئ", desc:"مالك المنتج في Scrum", url:"https://www.scrum.org/assessments/professional-scrum-product-owner-i-certification", cost:563 },
+  { id:85, name:"SAFe Agilist", category:"إدارة المشاريع", provider:"Scaled Agile", level:"متوسط", desc:"Agile على مستوى المؤسسات", url:"https://scaledagile.com/certification/", cost:3731 },
+  { id:86, name:"ITIL 4 Foundation", category:"إدارة الخدمات والحوكمة", provider:"Axelos", level:"مبتدئ", desc:"إدارة خدمات تقنية المعلومات", url:"https://www.axelos.com/certifications/itil-service-management/itil-4-foundation", cost:1444 },
+  { id:87, name:"ITIL 4 Managing Professional", category:"إدارة الخدمات والحوكمة", provider:"Axelos", level:"متقدم", desc:"إدارة الخدمات المتقدمة", url:"https://www.axelos.com/certifications/itil-service-management/managing-professional", cost:1875 },
+  { id:88, name:"ITIL 4 Strategic Leader", category:"إدارة الخدمات والحوكمة", provider:"Axelos", level:"متقدم", desc:"القيادة الاستراتيجية لتقنية المعلومات", url:"https://www.axelos.com/certifications/itil-service-management/strategic-leader", cost:1875 },
+  { id:89, name:"Salesforce Administrator", category:"إدارة الخدمات والحوكمة", provider:"Salesforce", level:"متوسط", desc:"إدارة منصة Salesforce CRM", url:"https://trailhead.salesforce.com/credentials/administrator", cost:750 },
+  { id:90, name:"Salesforce Platform App Builder", category:"إدارة الخدمات والحوكمة", provider:"Salesforce", level:"متوسط", desc:"بناء تطبيقات على Salesforce", url:"https://trailhead.salesforce.com/credentials/platform-app-builder", cost:750 },
+  { id:91, name:"CISA", category:"إدارة الخدمات والحوكمة", provider:"ISACA", level:"متقدم", desc:"تدقيق نظم المعلومات", url:"https://www.isaca.org/credentialing/cisa", cost:2850 },
+  { id:92, name:"COBIT 2019 Foundation", category:"إدارة الخدمات والحوكمة", provider:"ISACA", level:"مبتدئ", desc:"حوكمة تقنية المعلومات", url:"https://www.isaca.org/credentialing/cobit", cost:750 },
+  { id:93, name:"ISO 27001 Lead Implementer", category:"إدارة الخدمات والحوكمة", provider:"PECB", level:"متقدم", desc:"تطبيق معيار أمن المعلومات ISO 27001", url:"https://pecb.com/en/education-and-certification-for-individuals/iso-iec-27001", cost:2250 },
+  { id:94, name:"CDPSE", category:"إدارة الخدمات والحوكمة", provider:"ISACA", level:"متقدم", desc:"هندسة حلول خصوصية البيانات", url:"https://www.isaca.org/credentialing/cdpse", cost:2850 },
+  { id:95, name:"NCA Cyber Security Certification", category:"الشهادات السعودية والإقليمية", provider:"الهيئة الوطنية للأمن السيبراني", level:"متوسط", desc:"شهادة الأمن السيبراني الوطنية السعودية", url:"https://nca.gov.sa/en/registration-and-licensing/", cost:1500 },
+  { id:96, name:"NCA Certified Security Professional", category:"الشهادات السعودية والإقليمية", provider:"الهيئة الوطنية للأمن السيبراني", level:"متقدم", desc:"المهني المعتمد للأمن السيبراني", url:"https://nca.gov.sa/en/cert/", cost:2500 },
+  { id:97, name:"CITC Telecom Equipment Certification", category:"الشهادات السعودية والإقليمية", provider:"هيئة الاتصالات والفضاء والتقنية", level:"مبتدئ", desc:"شهادة اعتماد معدات الاتصالات", url:"https://www.cst.gov.sa/en/RulesandSystems/RegulatoryDocuments/Licenses/CITCLicensingGeneralSpecialConditions/Pages/default.aspx", cost:500 },
+  { id:98, name:"Saudi Digital Government Certificate", category:"الشهادات السعودية والإقليمية", provider:"هيئة الحكومة الرقمية", level:"متوسط", desc:"شهادة الحكومة الرقمية السعودية", url:"https://www.dga.gov.sa/", cost:800 },
+  { id:99, name:"Emirates IT Certification", category:"الشهادات السعودية والإقليمية", provider:"UAEBB", level:"مبتدئ", desc:"شهادة تقنية المعلومات الإماراتية", url:"https://www.smartworld.ae/", cost:600 },
+  { id:100, name:"Huawei Cloud Associate", category:"الشهادات السعودية والإقليمية", provider:"Huawei", level:"مبتدئ", desc:"أساسيات Huawei Cloud", url:"https://support.huawei.com/learning/node-1101091001", cost:400 },
+  { id:101, name:"Oracle Cloud Infrastructure 2024", category:"الحوسبة السحابية", provider:"Oracle", level:"متوسط", desc:"إدارة البنية السحابية في OCI", url:"https://education.oracle.com/oracle-cloud-infrastructure-2024-architect-associate", cost:919 },
+  { id:102, name:"Google Cloud Database Engineer", category:"الحوسبة السحابية", provider:"Google Cloud", level:"متوسط", desc:"هندسة قواعد البيانات في GCP", url:"https://cloud.google.com/learn/certification/cloud-database-engineer", cost:750 },
+  { id:103, name:"Microsoft AZ-305", category:"الحوسبة السحابية", provider:"Microsoft", level:"متقدم", desc:"تصميم حلول البنية التحتية في Azure", url:"https://learn.microsoft.com/en-us/certifications/azure-solutions-architect/", cost:619 },
+  { id:104, name:"HashiCorp Consul Associate", category:"DevOps والـ Cloud Native", provider:"HashiCorp", level:"مبتدئ", desc:"خدمة الاكتشاف والتوحيد", url:"https://developer.hashicorp.com/consul/tutorials/associate-certification", cost:263 },
+  { id:105, name:"Linux Foundation Certified Cloud Technician", category:"أنظمة التشغيل والـ Linux", provider:"Linux Foundation", level:"مبتدئ", desc:"تقني السحابة المعتمد", url:"https://training.linuxfoundation.org/certification/certified-cloud-technician/", cost:395 }
+];
+
+let activeCategory = 'الكل';
+let activeLevel = 'الكل';
+let searchTerm = '';
+
+const categories = ['الكل', ...new Set(certs.map(c => c.category))];
+
+const catContainer = document.getElementById('category-filters');
+categories.forEach(cat => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn' + (cat === 'الكل' ? ' active' : '');
+  btn.textContent = cat === 'الكل' ? '📋 الكل' : cat;
+  btn.onclick = () => {
+    activeCategory = cat;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  };
+  catContainer.appendChild(btn);
+});
+
+document.querySelectorAll('.level-btn').forEach(btn => {
+  btn.onclick = () => {
+    activeLevel = btn.dataset.level;
+    document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  };
+});
+
+document.getElementById('search').addEventListener('input', e => {
+  searchTerm = e.target.value.trim().toLowerCase();
+  render();
+});
+
+function resetFilters() {
+  activeCategory = 'الكل';
+  activeLevel = 'الكل';
+  searchTerm = '';
+  document.getElementById('search').value = '';
+  document.querySelectorAll('.filter-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.querySelectorAll('.level-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  render();
+}
+
+function levelClass(level) {
+  if (level === 'مبتدئ') return 'beginner';
+  if (level === 'متوسط') return 'intermediate';
+  return 'advanced';
+}
+
+function render() {
+  const filtered = certs.filter(c => {
+    if (activeCategory !== 'الكل' && c.category !== activeCategory) return false;
+    if (activeLevel !== 'الكل' && c.level !== activeLevel) return false;
+    if (searchTerm && !c.name.toLowerCase().includes(searchTerm) && !c.provider.toLowerCase().includes(searchTerm) && !c.desc.includes(searchTerm)) return false;
+    return true;
+  });
+
+  document.getElementById('shown-count').textContent = filtered.length;
+
+  const grid = document.getElementById('grid');
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><h3>لا توجد نتائج</h3><p>جرّب تغيير كلمة البحث أو الفلاتر</p></div>`;
+    return;
+  }
+
+  const isSaudiCat = activeCategory === 'الشهادات السعودية والإقليمية';
+
+  grid.innerHTML = filtered.map(c => `
+    <div class="card ${levelClass(c.level)}">
+      <div class="card-top">
+        <span class="category-tag ${c.category === 'الشهادات السعودية والإقليمية' ? 'saudi-tag' : ''}">${c.category}</span>
+        <span class="level-badge ${c.level}">${c.level}</span>
+      </div>
+      <div class="card-name">${c.name}</div>
+      <div class="card-desc">${c.desc}</div>
+      <div class="card-meta">
+        <div class="meta-item"><span class="icon">🏢</span>${c.provider}</div>
+        <div class="meta-item cost ${c.cost === 0 ? 'free' : 'paid'}">
+          <span class="icon">💰</span>${c.cost === 0 ? 'مجاناً' : c.cost.toLocaleString() + ' ر.س'}
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="${c.url}" target="_blank" rel="noopener" class="apply-btn">التقديم المباشر ←</a>
+      </div>
+    </div>
+  `).join('');
+}
+
+render();
+</script>
+</body>
+</html>
