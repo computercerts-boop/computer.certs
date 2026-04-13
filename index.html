@@ -390,9 +390,9 @@
 <div class="hero">
   <div class="hero-badge">🎓 دليل شامل ومحدّث</div>
   <h1>الشهادات الاحترافية<br>في تقنية المعلومات</h1>
-  <p>أكثر من 105 شهادات احترافية في جميع تخصصات الحاسب، مع مستوى كل شهادة ورابط التقديم المباشر</p>
+  <p>أكثر من 90 شهادة احترافية في جميع تخصصات الحاسب، مع مستوى كل شهادة ورابط التقديم المباشر</p>
   <div class="stats-row">
-    <div class="stat"><div class="stat-num" id="total-count">105+</div><div class="stat-label">شهادة احترافية</div></div>
+    <div class="stat"><div class="stat-num" id="total-count">90+</div><div class="stat-label">شهادة احترافية</div></div>
     <div class="stat"><div class="stat-num">12</div><div class="stat-label">تخصص رئيسي</div></div>
     <div class="stat"><div class="stat-num">40+</div><div class="stat-label">جهة معتمدة</div></div>
   </div>
@@ -449,7 +449,6 @@ const certs = [
   { id:24, name:"AWS Security Specialty", category:"الأمن السيبراني", provider:"Amazon AWS", level:"متقدم", desc:"أمن السحابة على AWS", url:"https://aws.amazon.com/certification/certified-security-specialty/", cost:1125 },
   { id:25, name:"Microsoft AZ-500", category:"الأمن السيبراني", provider:"Microsoft", level:"متقدم", desc:"أمن Azure الاحترافي", url:"https://learn.microsoft.com/en-us/certifications/azure-security-engineer/", cost:619 },
   { id:26, name:"GIAC Security Essentials (GSEC)", category:"الأمن السيبراني", provider:"SANS/GIAC", level:"متوسط", desc:"أساسيات الأمن السيبراني من SANS", url:"https://www.giac.org/certification/security-essentials-gsec", cost:1874 },
-  { id:27, name:"GIAC Penetration Tester (GPEN)", category:"الأمن السيبراني", provider:"SANS/GIAC", level:"متقدم", desc:"اختبار الاختراق الاحترافي", url:"https://www.giac.org/certification/penetration-tester", cost:1874 },
   { id:28, name:"AWS Cloud Practitioner", category:"الحوسبة السحابية", provider:"Amazon AWS", level:"مبتدئ", desc:"أساسيات السحابة مع AWS", url:"https://aws.amazon.com/certification/certified-cloud-practitioner/", cost:375 },
   { id:29, name:"AWS Solutions Architect Associate", category:"الحوسبة السحابية", provider:"Amazon AWS", level:"متوسط", desc:"تصميم حلول سحابية على AWS", url:"https://aws.amazon.com/certification/certified-solutions-architect-associate/", cost:563 },
   { id:30, name:"AWS Solutions Architect Professional", category:"الحوسبة السحابية", provider:"Amazon AWS", level:"متقدم", desc:"تصميم معماريات سحابية معقدة", url:"https://aws.amazon.com/certification/certified-solutions-architect-professional/", cost:1125 },
@@ -461,14 +460,11 @@ const certs = [
   { id:36, name:"Google Cloud Digital Leader", category:"الحوسبة السحابية", provider:"Google Cloud", level:"مبتدئ", desc:"أساسيات Google Cloud", url:"https://cloud.google.com/learn/certification/cloud-digital-leader", cost:750 },
   { id:37, name:"Google Associate Cloud Engineer", category:"الحوسبة السحابية", provider:"Google Cloud", level:"متوسط", desc:"هندسة السحابة مع Google", url:"https://cloud.google.com/learn/certification/cloud-engineer", cost:469 },
   { id:38, name:"Google Cloud Professional Architect", category:"الحوسبة السحابية", provider:"Google Cloud", level:"متقدم", desc:"تصميم حلول سحابية احترافية", url:"https://cloud.google.com/learn/certification/cloud-architect", cost:750 },
-  { id:39, name:"Oracle Cloud Infrastructure Foundations", category:"الحوسبة السحابية", provider:"Oracle", level:"مبتدئ", desc:"أساسيات Oracle Cloud مجانية", url:"https://education.oracle.com/oracle-cloud-infrastructure-2023-foundations-associate", cost:0 },
-  { id:40, name:"Oracle Cloud Data Management", category:"الحوسبة السحابية", provider:"Oracle", level:"متوسط", desc:"إدارة البيانات في Oracle Cloud", url:"https://education.oracle.com/oracle-cloud-data-management-2023-associate", cost:919 },
   { id:41, name:"CompTIA Cloud+", category:"الحوسبة السحابية", provider:"CompTIA", level:"متوسط", desc:"إدارة وتأمين البنية السحابية", url:"https://www.comptia.org/certifications/cloud", cost:1268 },
   { id:42, name:"Alibaba Cloud Associate", category:"الحوسبة السحابية", provider:"Alibaba Cloud", level:"مبتدئ", desc:"أساسيات Alibaba Cloud", url:"https://www.alibabacloud.com/certification", cost:600 },
   { id:43, name:"IBM Cloud Fundamentals", category:"الحوسبة السحابية", provider:"IBM", level:"مبتدئ", desc:"أساسيات IBM Cloud", url:"https://www.ibm.com/certify/cloud", cost:200 },
   { id:44, name:"Python Institute PCEP", category:"البرمجة", provider:"Python Institute", level:"مبتدئ", desc:"أساسيات برمجة Python", url:"https://pythoninstitute.org/pcep", cost:259 },
   { id:45, name:"Python Institute PCAP", category:"البرمجة", provider:"Python Institute", level:"متوسط", desc:"برمجة Python المتقدمة", url:"https://pythoninstitute.org/pcap", cost:1106 },
-  { id:46, name:"Oracle Java SE 17 Developer", category:"البرمجة", provider:"Oracle", level:"متوسط", desc:"تطوير Java الاحترافي", url:"https://education.oracle.com/java-se-17-developer", cost:919 },
   { id:47, name:"CKAD", category:"البرمجة", provider:"CNCF / Linux Foundation", level:"متوسط", desc:"تطوير تطبيقات Kubernetes", url:"https://training.linuxfoundation.org/certification/certified-kubernetes-application-developer-ckad/", cost:1481 },
   { id:48, name:"MongoDB Associate Developer", category:"البرمجة", provider:"MongoDB", level:"مبتدئ", desc:"تطوير تطبيقات MongoDB مجاناً", url:"https://learn.mongodb.com/pages/mongodb-associate-developer-exam", cost:0 },
   { id:49, name:"Meta Back-End Developer", category:"البرمجة", provider:"Meta", level:"متوسط", desc:"تطوير التطبيقات الخلفية من Meta", url:"https://www.coursera.org/professional-certificates/meta-back-end-developer", cost:490 },
@@ -493,7 +489,6 @@ const certs = [
   { id:68, name:"Red Hat RHCE", category:"أنظمة التشغيل والـ Linux", provider:"Red Hat", level:"متقدم", desc:"مهندس Red Hat المعتمد", url:"https://www.redhat.com/en/services/certification/rhce", cost:1500 },
   { id:69, name:"AWS SysOps Administrator (Updated)", category:"DevOps والـ Cloud Native", provider:"Amazon AWS", level:"متوسط", desc:"إدارة عمليات السحابة", url:"https://aws.amazon.com/certification/certified-sysops-admin-associate/", cost:563 },
   { id:70, name:"Certified Kubernetes Administrator (CKA)", category:"DevOps والـ Cloud Native", provider:"CNCF", level:"متوسط", desc:"إدارة Kubernetes الاحترافية", url:"https://training.linuxfoundation.org/certification/certified-kubernetes-administrator-cka/", cost:1481 },
-  { id:71, name:"Certified Kubernetes Security Specialist (CKS)", category:"DevOps والـ Cloud Native", provider:"CNCF", level:"متقدم", desc:"أمن Kubernetes الاحترافي", url:"https://training.linuxfoundation.org/certification/certified-kubernetes-security-specialist-cks-2/", cost:1669 },
   { id:72, name:"Docker Certified Associate (DCA)", category:"DevOps والـ Cloud Native", provider:"Mirantis", level:"متوسط", desc:"إدارة حاويات Docker", url:"https://training.mirantis.com/certification/dca-certification-exam/", cost:731 },
   { id:73, name:"HashiCorp Terraform Associate", category:"DevOps والـ Cloud Native", provider:"HashiCorp", level:"متوسط", desc:"البنية التحتية كـ Code", url:"https://www.hashicorp.com/certifications/terraform-associate", cost:263 },
   { id:74, name:"HashiCorp Vault Associate", category:"DevOps والـ Cloud Native", provider:"HashiCorp", level:"متوسط", desc:"إدارة الأسرار والأمان", url:"https://developer.hashicorp.com/vault/tutorials/associate-cert-003", cost:375 },
@@ -512,22 +507,12 @@ const certs = [
   { id:87, name:"ITIL 4 Managing Professional", category:"إدارة الخدمات والحوكمة", provider:"Axelos", level:"متقدم", desc:"إدارة الخدمات المتقدمة", url:"https://www.axelos.com/certifications/itil-service-management/managing-professional", cost:1875 },
   { id:88, name:"ITIL 4 Strategic Leader", category:"إدارة الخدمات والحوكمة", provider:"Axelos", level:"متقدم", desc:"القيادة الاستراتيجية لتقنية المعلومات", url:"https://www.axelos.com/certifications/itil-service-management/strategic-leader", cost:1875 },
   { id:89, name:"Salesforce Administrator", category:"إدارة الخدمات والحوكمة", provider:"Salesforce", level:"متوسط", desc:"إدارة منصة Salesforce CRM", url:"https://trailhead.salesforce.com/credentials/administrator", cost:750 },
-  { id:90, name:"Salesforce Platform App Builder", category:"إدارة الخدمات والحوكمة", provider:"Salesforce", level:"متوسط", desc:"بناء تطبيقات على Salesforce", url:"https://trailhead.salesforce.com/credentials/platform-app-builder", cost:750 },
   { id:91, name:"CISA", category:"إدارة الخدمات والحوكمة", provider:"ISACA", level:"متقدم", desc:"تدقيق نظم المعلومات", url:"https://www.isaca.org/credentialing/cisa", cost:2850 },
   { id:92, name:"COBIT 2019 Foundation", category:"إدارة الخدمات والحوكمة", provider:"ISACA", level:"مبتدئ", desc:"حوكمة تقنية المعلومات", url:"https://www.isaca.org/credentialing/cobit", cost:750 },
-  { id:93, name:"ISO 27001 Lead Implementer", category:"إدارة الخدمات والحوكمة", provider:"PECB", level:"متقدم", desc:"تطبيق معيار أمن المعلومات ISO 27001", url:"https://pecb.com/en/education-and-certification-for-individuals/iso-iec-27001", cost:2250 },
   { id:94, name:"CDPSE", category:"إدارة الخدمات والحوكمة", provider:"ISACA", level:"متقدم", desc:"هندسة حلول خصوصية البيانات", url:"https://www.isaca.org/credentialing/cdpse", cost:2850 },
-  { id:95, name:"NCA Cyber Security Certification", category:"الشهادات السعودية والإقليمية", provider:"الهيئة الوطنية للأمن السيبراني", level:"متوسط", desc:"شهادة الأمن السيبراني الوطنية السعودية", url:"https://nca.gov.sa/en/registration-and-licensing/", cost:1500 },
-  { id:96, name:"NCA Certified Security Professional", category:"الشهادات السعودية والإقليمية", provider:"الهيئة الوطنية للأمن السيبراني", level:"متقدم", desc:"المهني المعتمد للأمن السيبراني", url:"https://nca.gov.sa/en/cert/", cost:2500 },
-  { id:97, name:"CITC Telecom Equipment Certification", category:"الشهادات السعودية والإقليمية", provider:"هيئة الاتصالات والفضاء والتقنية", level:"مبتدئ", desc:"شهادة اعتماد معدات الاتصالات", url:"https://www.cst.gov.sa/en/RulesandSystems/RegulatoryDocuments/Licenses/CITCLicensingGeneralSpecialConditions/Pages/default.aspx", cost:500 },
-  { id:98, name:"Saudi Digital Government Certificate", category:"الشهادات السعودية والإقليمية", provider:"هيئة الحكومة الرقمية", level:"متوسط", desc:"شهادة الحكومة الرقمية السعودية", url:"https://www.dga.gov.sa/", cost:800 },
-  { id:99, name:"Emirates IT Certification", category:"الشهادات السعودية والإقليمية", provider:"UAEBB", level:"مبتدئ", desc:"شهادة تقنية المعلومات الإماراتية", url:"https://www.smartworld.ae/", cost:600 },
   { id:100, name:"Huawei Cloud Associate", category:"الشهادات السعودية والإقليمية", provider:"Huawei", level:"مبتدئ", desc:"أساسيات Huawei Cloud", url:"https://support.huawei.com/learning/node-1101091001", cost:400 },
-  { id:101, name:"Oracle Cloud Infrastructure 2024", category:"الحوسبة السحابية", provider:"Oracle", level:"متوسط", desc:"إدارة البنية السحابية في OCI", url:"https://education.oracle.com/oracle-cloud-infrastructure-2024-architect-associate", cost:919 },
   { id:102, name:"Google Cloud Database Engineer", category:"الحوسبة السحابية", provider:"Google Cloud", level:"متوسط", desc:"هندسة قواعد البيانات في GCP", url:"https://cloud.google.com/learn/certification/cloud-database-engineer", cost:750 },
   { id:103, name:"Microsoft AZ-305", category:"الحوسبة السحابية", provider:"Microsoft", level:"متقدم", desc:"تصميم حلول البنية التحتية في Azure", url:"https://learn.microsoft.com/en-us/certifications/azure-solutions-architect/", cost:619 },
-  { id:104, name:"HashiCorp Consul Associate", category:"DevOps والـ Cloud Native", provider:"HashiCorp", level:"مبتدئ", desc:"خدمة الاكتشاف والتوحيد", url:"https://developer.hashicorp.com/consul/tutorials/associate-certification", cost:263 },
-  { id:105, name:"Linux Foundation Certified Cloud Technician", category:"أنظمة التشغيل والـ Linux", provider:"Linux Foundation", level:"مبتدئ", desc:"تقني السحابة المعتمد", url:"https://training.linuxfoundation.org/certification/certified-cloud-technician/", cost:395 }
 ];
 
 let activeCategory = 'الكل';
